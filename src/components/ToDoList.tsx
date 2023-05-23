@@ -1,43 +1,41 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import CreateToDo from "./CreateToDo";
 import { Categories, categoryState, toDoSelector } from "../atoms";
 import ToDo from "./ToDo";
 
 const ToDoList = () => {
-  const category = useRecoilValue(categoryState);
-  const [toDo, doing, done] = useRecoilValue(toDoSelector);
+  const toDos = useRecoilValue(toDoSelector);
+  const setCategory = useSetRecoilState(categoryState);
+
+  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setCategory(event.currentTarget.value as any);
+  };
 
   return (
     <div>
       <h1>TO DO LIST</h1>
       <hr />
+
+      <button value={Categories.TO_DO} onClick={onClick}>
+        To Do
+      </button>
+      <button value={Categories.DOING} onClick={onClick}>
+        Doing
+      </button>
+      <button value={Categories.DONE} onClick={onClick}>
+        Done
+      </button>
+      {/* <select value={category} onInput={onClick}>
+        <option value={Categories.TO_DO}>To Do</option>
+        <option value={Categories.DOING}>Doing</option>
+        <option value={Categories.DONE}>Done</option>
+      </select> */}
+
       <CreateToDo />
 
-      <h2>To Do</h2>
-      {category === Categories.TO_DO && (
-        <ul>
-          {toDo.map((toDo) => (
-            <ToDo key={toDo.id} {...toDo} />
-          ))}
-        </ul>
-      )}
-      <hr />
-
-      <h2>Doing</h2>
-      <ul>
-        {doing.map((toDo) => (
-          <ToDo key={toDo.id} {...toDo} />
-        ))}
-      </ul>
-      <hr />
-
-      <h2>Done</h2>
-      <ul>
-        {done.map((toDo) => (
-          <ToDo key={toDo.id} {...toDo} />
-        ))}
-      </ul>
-      <hr />
+      {toDos.map((toDo) => (
+        <ToDo key={toDo.id} {...toDo} />
+      ))}
     </div>
   );
 };
