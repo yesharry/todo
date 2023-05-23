@@ -1,7 +1,7 @@
 # todo
 
-yarn
-vite
-react + typescript
-recoil
-styled-components
+yarn <br/>
+vite <br/>
+react + typescript <br/>
+recoil <br/>
+styled-components <br/>
