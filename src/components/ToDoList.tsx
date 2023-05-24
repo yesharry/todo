@@ -13,7 +13,7 @@ const ToDoList = () => {
 
   return (
     <div>
-      <h1>TO DO LIST</h1>
+      <h1 className="text-rose-600">TO DO LIST</h1>
       <hr />
 
       <button value={Categories.TO_DO} onClick={onClick}>
@@ -25,11 +25,6 @@ const ToDoList = () => {
       <button value={Categories.DONE} onClick={onClick}>
         Done
       </button>
-      {/* <select value={category} onInput={onClick}>
-        <option value={Categories.TO_DO}>To Do</option>
-        <option value={Categories.DOING}>Doing</option>
-        <option value={Categories.DONE}>Done</option>
-      </select> */}
 
       <CreateToDo />
 
