@@ -36,11 +36,13 @@ const CreateToDo = () => {
           value={value}
           placeholder="Write a to do"
           className={` w-3/4 h-[40px] rounded-lg p-3 shadow-md border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[3px] ${
-            darkMode ? " focus:border-[#ff55ad]" : " focus:border-[#24d6e3]"
+            darkMode
+              ? " text-black focus:border-[#ff55ad]"
+              : " focus:border-[#24d6e3]"
           }`}
         />
         <button
-          className={` w-[70px] shadow-md hover:shadow-inner rounded-lg text-sm text-white font-bold ${
+          className={` w-[75px] shadow-md hover:shadow-inner rounded-lg text-sm text-white font-bold ${
             darkMode ? " bg-[#ff55ad]" : " bg-[#24d6e3]"
           }`}
         >

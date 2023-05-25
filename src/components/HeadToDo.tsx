@@ -18,13 +18,23 @@ const HeadToDo = () => {
       <div className=" flex justify-between items-center pt-6">
         <h1 className="text-4xl font-bold">TO DO LIST</h1>
         {darkMode ? (
-          <button onClick={toggleDarkMode} className=" text-2xl pr-1">
-            🌝
-          </button>
+          <div className=" w-[51px] h-[31px] border-[3px] border-[#333333] rounded-full">
+            <button
+              onClick={toggleDarkMode}
+              className=" w-[25px] h-[25px] bg-[#333333] text-xs rounded-full absolute transition duration-300 translate-x-0"
+            >
+              🌝
+            </button>
+          </div>
         ) : (
-          <button onClick={toggleDarkMode} className=" text-2xl pr-1">
-            🌞
-          </button>
+          <div className=" w-[51px] h-[31px] border-[3px] border-white rounded-full shadow-md">
+            <button
+              onClick={toggleDarkMode}
+              className=" w-[25px] h-[25px] bg-white text-xs rounded-full absolute transition ease-in translate-x-5"
+            >
+              🌞
+            </button>
+          </div>
         )}
       </div>
       <div className=" flex flex-col">

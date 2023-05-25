@@ -6,8 +6,7 @@ function App() {
   const darkMode = useRecoilValue(isDarkState);
   return (
     <>
-      {/*  bg-[#dcdfe0] dark:bg-[#28282c] */}
-      <div className={`h-screen pt-24 ${darkMode ? "dark" : "light"}`}>
+      <div className={`h-screen pt-20 ${darkMode ? "dark" : "light"}`}>
         <TemplateToDo />
       </div>
     </>

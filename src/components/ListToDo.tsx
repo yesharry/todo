@@ -8,7 +8,7 @@ const ListToDo = () => {
   return (
     <>
       <span className=" text-xs text-gray-500 mt-4 mb-3">TO DO LIST</span>
-      <div className=" flex-1 overflow-y-auto">
+      <div className=" rounded-lg flex-1 overflow-y-auto">
         {toDos.map((toDo) => (
           <ItemToDo key={toDo.id} {...toDo} />
         ))}
