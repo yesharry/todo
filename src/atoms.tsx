@@ -1,19 +1,19 @@
 import { atom, selector } from "recoil";
 
-export const isLightState = atom<boolean>({
-  key: "isLightState",
-  default: true,
+export const isDarkState = atom<boolean>({
+  key: "isDarkState",
+  default: false,
   effects: [
     ({ setSelf, onSet }) => {
-      const lightKey = "light";
-      const savedValue = localStorage.getItem(lightKey);
+      const darkKey = "dark";
+      const savedValue = localStorage.getItem(darkKey);
       if (savedValue != null) {
         setSelf(JSON.parse(savedValue));
       }
       onSet((newValue, _, isReset) => {
         isReset
-          ? localStorage.removeItem(lightKey)
-          : localStorage.setItem(lightKey, JSON.stringify(newValue));
+          ? localStorage.removeItem(darkKey)
+          : localStorage.setItem(darkKey, JSON.stringify(newValue));
       });
     },
   ],

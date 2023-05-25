@@ -1,10 +1,17 @@
+import { useRecoilValue } from "recoil";
 import CreateToDo from "./CreateToDo";
 import HeadToDo from "./HeadToDo";
 import ListToDo from "./ListToDo";
+import { isDarkState } from "../atoms";
 
 const TemplateToDo = () => {
+  const darkMode = useRecoilValue(isDarkState);
   return (
-    <div className="w-[400px] h-[650px] rounded-2xl bg-gray-100 border-2 border-white flex flex-col m-auto p-5">
+    <div
+      className={`w-[400px] h-[700px] rounded-2xl flex flex-col m-auto p-6 ${
+        darkMode ? " bg-black" : "bg-gray-100"
+      }`}
+    >
       <HeadToDo />
       <ListToDo />
       <CreateToDo />

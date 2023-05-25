@@ -1,9 +1,10 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { IToDo, categoriesState, toDoState } from "../atoms";
+import { IToDo, categoriesState, isDarkState, toDoState } from "../atoms";
 
 const ItemToDo = ({ text, category, id }: IToDo) => {
   const setToDos = useSetRecoilState(toDoState);
   const categories = useRecoilValue(categoriesState);
+  const darkMode = useRecoilValue(isDarkState);
 
   const changeCategory = (event: string) => {
     setToDos((oldToDos) => {
@@ -30,7 +31,11 @@ const ItemToDo = ({ text, category, id }: IToDo) => {
   };
 
   return (
-    <div className=" bg-white shadow-md rounded-xl p-3 mb-4">
+    <div
+      className={`shadow-md rounded-xl p-3 mb-4 ${
+        darkMode ? " bg-[#333333]" : "bg-white"
+      }`}
+    >
       {/* 여기 아직 비어있음 위에 div */}
       <span className=" text-lg pl-1">{text}</span>
       <div className=" mt-1">
@@ -39,7 +44,11 @@ const ItemToDo = ({ text, category, id }: IToDo) => {
             key={availableCategory}
             onClick={() => changeCategory(availableCategory)}
             disabled={availableCategory === category}
-            className=" w-[60px] h-7 bg-[#e0e0e0] disabled:bg-[#f1f1f1] text-xs disabled:text-[#8a8a8a] font-bold rounded-md mr-1"
+            className={` w-[60px] h-7 text-xs font-bold rounded-md mr-1 ${
+              darkMode
+                ? " bg-[#232323] disabled:bg-[#505050]  disabled:text-[#353535]"
+                : " bg-[#e0e0e0] disabled:bg-[#f1f1f1]  disabled:text-[#8a8a8a]"
+            }`}
           >
             {availableCategory}
           </button>

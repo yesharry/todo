@@ -1,11 +1,12 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { categoryState, toDoState } from "../atoms";
+import { categoryState, isDarkState, toDoState } from "../atoms";
 import { useState } from "react";
 
 const CreateToDo = () => {
   const setToDos = useSetRecoilState(toDoState);
   const category = useRecoilValue(categoryState);
   const [value, setValue] = useState("");
+  const darkMode = useRecoilValue(isDarkState);
 
   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
     const {
@@ -34,9 +35,15 @@ const CreateToDo = () => {
           onChange={onChange}
           value={value}
           placeholder="Write a to do"
-          className=" w-3/4 h-[40px] rounded-lg p-3 shadow-md border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[#24d6e3] focus:border-[3px]"
+          className={` w-3/4 h-[40px] rounded-lg p-3 shadow-md border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[3px] ${
+            darkMode ? " focus:border-[#ff55ad]" : " focus:border-[#24d6e3]"
+          }`}
         />
-        <button className=" w-[70px] bg-[#24d6e3] shadow-md hover:shadow-inner rounded-lg text-sm text-white font-bold">
+        <button
+          className={` w-[70px] shadow-md hover:shadow-inner rounded-lg text-sm text-white font-bold ${
+            darkMode ? " bg-[#ff55ad]" : " bg-[#24d6e3]"
+          }`}
+        >
           ADD
         </button>
       </form>
