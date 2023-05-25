@@ -5,6 +5,7 @@ vite <br/>
 react + typescript <br/>
 recoil <br/>
 tailwind css <br/>
+netlify <br/>
 
 <!--
 - 추가
