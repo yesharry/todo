@@ -45,10 +45,10 @@ const HeadToDo = () => {
               key={availableCategory}
               onClick={() => onClick(availableCategory)}
               disabled={availableCategory === category}
-              className={` w-[110px] h-[45px] bg-white rounded-xl shadow-md hover:shadow-inner disabled:shadow-md text-sm font-bold disabled:text-white  ${
+              className={` w-[110px] h-[45px] rounded-xl shadow-md hover:shadow-inner disabled:shadow-md text-sm font-bold disabled:text-white  ${
                 darkMode
                   ? " bg-[#333333] hover:text-[#ff55ad] disabled:bg-[#ff55ad]"
-                  : " hover:text-[#24d6e3] disabled:bg-[#24d6e3]"
+                  : " bg-white hover:text-[#24d6e3] disabled:bg-[#24d6e3]"
               }`}
             >
               {availableCategory}
