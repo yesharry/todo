@@ -8,10 +8,9 @@ const HeadToDo = () => {
   const onClick = (category: string) => {
     setCategory(category);
   };
-
   return (
-    <div>
-      <h1 className="text-4xl font-bold pt-7">TO DO LIST</h1>
+    <>
+      <h1 className="text-4xl font-bold pt-6">TO DO LIST</h1>
       <div className=" flex flex-col">
         <span className=" text-xs text-gray-500 mt-5">CATEGORIES</span>
         <div className=" flex justify-between mt-2">
@@ -27,7 +26,7 @@ const HeadToDo = () => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

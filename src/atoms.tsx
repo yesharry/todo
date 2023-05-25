@@ -1,5 +1,24 @@
 import { atom, selector } from "recoil";
 
+export const isLightState = atom<boolean>({
+  key: "isLightState",
+  default: true,
+  effects: [
+    ({ setSelf, onSet }) => {
+      const lightKey = "light";
+      const savedValue = localStorage.getItem(lightKey);
+      if (savedValue != null) {
+        setSelf(JSON.parse(savedValue));
+      }
+      onSet((newValue, _, isReset) => {
+        isReset
+          ? localStorage.removeItem(lightKey)
+          : localStorage.setItem(lightKey, JSON.stringify(newValue));
+      });
+    },
+  ],
+});
+
 export const categories: string[] = ["TODO", "DOING", "DONE"];
 
 export interface IToDo {

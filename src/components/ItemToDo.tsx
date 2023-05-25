@@ -1,7 +1,7 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { IToDo, categoriesState, toDoState } from "../atoms";
 
-const ToDo = ({ text, category, id }: IToDo) => {
+const ItemToDo = ({ text, category, id }: IToDo) => {
   const setToDos = useSetRecoilState(toDoState);
   const categories = useRecoilValue(categoriesState);
 
@@ -30,7 +30,8 @@ const ToDo = ({ text, category, id }: IToDo) => {
   };
 
   return (
-    <div className=" w-full h-[85px] bg-white shadow-md rounded-xl flex flex-col justify-center my-3 pl-3">
+    <div className=" bg-white shadow-md rounded-xl p-3 mb-4">
+      {/* 여기 아직 비어있음 위에 div */}
       <span className=" text-lg pl-1">{text}</span>
       <div className=" mt-1">
         {Object.values(categories).map((availableCategory) => (
@@ -54,4 +55,4 @@ const ToDo = ({ text, category, id }: IToDo) => {
   );
 };
 
-export default ToDo;
+export default ItemToDo;

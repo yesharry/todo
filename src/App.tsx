@@ -1,10 +1,18 @@
-import ToDo from "./components/ToDo";
+import { createGlobalStyle } from "styled-components";
+import TemplateToDo from "./components/TemplateToDo";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: #dcdfe0;
+  }
+`;
 
 function App() {
   return (
-    <div className=" h-screen flex justify-center items-center bg-[#dcdfe0] ">
-      <ToDo />
-    </div>
+    <>
+      <GlobalStyle />
+      <TemplateToDo />
+    </>
   );
 }
 
