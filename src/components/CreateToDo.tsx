@@ -28,14 +28,14 @@ const CreateToDo = () => {
   };
 
   return (
-    <form onSubmit={onSubmit} className=" w-full flex justify-between pt-2">
+    <form onSubmit={onSubmit} className=" w-full flex justify-between">
       <input
         onChange={onChange}
         value={value}
         placeholder="Write a to do"
-        className=" w-3/4 h-[40px] rounded-lg p-3 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-blue-400 focus:border-[3px]"
+        className=" w-3/4 h-[40px] rounded-lg p-3 shadow-md border-slate-300 placeholder-slate-400 focus:outline-none focus:border-blue-400 focus:border-[3px]"
       />
-      <button className=" w-[70px] bg-[#ffbcc3] text-white rounded-lg font-bold">
+      <button className=" w-[70px] bg-[#24d6e3] shadow-md rounded-lg text-white  font-bold">
         ADD
       </button>
     </form>

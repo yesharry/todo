@@ -1,37 +1,31 @@
-import { useSetRecoilState } from "recoil";
-import { Categories, categoryState } from "../atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { categoriesState, categoryState } from "../atoms";
 
 const HeadToDo = () => {
-  const setCategory = useSetRecoilState(categoryState);
+  const [category, setCategory] = useRecoilState(categoryState);
+  const categories = useRecoilValue(categoriesState);
 
-  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setCategory(event.currentTarget.value as any);
+  const onClick = (category: string) => {
+    setCategory(category);
   };
+
   return (
-    <div className="pb-5">
-      <h1 className="text-3xl text-gray-700 font-bold pb-5">TO DO LIST</h1>
-      <div className=" flex justify-between">
-        <button
-          value={Categories.TO_DO}
-          onClick={onClick}
-          className=" w-[110px] h-[50px] bg-white hover:bg-[#96c9ff] hover:text-white focus:bg-[#65b0ff] focus:text-white rounded-xl font-bold "
-        >
-          TODO
-        </button>
-        <button
-          value={Categories.DOING}
-          onClick={onClick}
-          className=" w-[110px] h-[50px] bg-white hover:bg-[#96c9ff] hover:text-white rounded-xl font-bold "
-        >
-          DOING
-        </button>
-        <button
-          value={Categories.DONE}
-          onClick={onClick}
-          className=" w-[110px] h-[50px] bg-white hover:bg-[#96c9ff] hover:text-white rounded-xl font-bold "
-        >
-          DONE
-        </button>
+    <div className="">
+      <h1 className="text-4xl font-bold">TO DO LIST</h1>
+      <div className=" flex flex-col">
+        <span className=" text-xs text-gray-500">CATEGORIES</span>
+        <div className=" flex justify-between">
+          {categories.map((availableCategory) => (
+            <button
+              key={availableCategory}
+              onClick={() => onClick(availableCategory)}
+              disabled={availableCategory === category}
+              className=" w-[110px] h-[45px] bg-white rounded-xl shadow-md font-bold disabled:bg-[#24d6e3] disabled:text-white"
+            >
+              {availableCategory}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

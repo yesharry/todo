@@ -1,16 +1,14 @@
-import { useSetRecoilState } from "recoil";
-import { Categories, IToDo, toDoState } from "../atoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { IToDo, categoriesState, toDoState } from "../atoms";
 
 const ToDo = ({ text, category, id }: IToDo) => {
   const setToDos = useSetRecoilState(toDoState);
+  const categories = useRecoilValue(categoriesState);
 
-  const changeCategory = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const {
-      currentTarget: { name },
-    } = event;
+  const changeCategory = (event: string) => {
     setToDos((oldToDos) => {
       const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
-      const newToDo = { text, id, category: name as any };
+      const newToDo = { text, id, category: event };
       return [
         ...oldToDos.slice(0, targetIndex),
         newToDo,
@@ -32,25 +30,25 @@ const ToDo = ({ text, category, id }: IToDo) => {
   };
 
   return (
-    <li>
-      <button onClick={() => deleteToDo(text)}>x</button>
+    <div className=" w-full h-[50px] bg-white shadow-md rounded-xl my-4">
       <span>{text}</span>
-      {category !== Categories.TO_DO && (
-        <button name={Categories.TO_DO} onClick={changeCategory}>
-          TO DO
+      {Object.values(categories).map((availableCategory) => (
+        <button
+          key={availableCategory}
+          onClick={() => changeCategory(availableCategory)}
+          disabled={availableCategory === category}
+          className=" disabled:text-gray-600"
+        >
+          {availableCategory}
         </button>
-      )}
-      {category !== Categories.DOING && (
-        <button name={Categories.DOING} onClick={changeCategory}>
-          DOING
-        </button>
-      )}
-      {category !== Categories.DONE && (
-        <button name={Categories.DONE} onClick={changeCategory}>
-          DONE
-        </button>
-      )}
-    </li>
+      ))}
+      <button
+        onClick={() => deleteToDo(text)}
+        className=" w-7 h-7 text-red-500 font-bold text-center border-[3px] border-red-500 rounded-full"
+      >
+        X
+      </button>
+    </div>
   );
 };
 
