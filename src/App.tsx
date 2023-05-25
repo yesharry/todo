@@ -1,9 +1,9 @@
-import ToDoList from "./components/ToDoList";
+import ToDo from "./components/ToDo";
 
 function App() {
   return (
     <div className=" h-screen flex justify-center items-center bg-[#dcdfe0] ">
-      <ToDoList />
+      <ToDo />
     </div>
   );
 }
