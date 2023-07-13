@@ -1,4 +1,6 @@
-# todo
+# TODO
+
+<img width="500" alt="스크린샷 2023-07-13 17 55 01" src="https://github.com/yesharry/todo/assets/101863209/7b5059fc-6230-45ee-a503-0e9886c5f528">
 
 yarn <br/>
 vite <br/>
